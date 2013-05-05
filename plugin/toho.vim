@@ -132,7 +132,7 @@ endfunction "}}}
 function! s:unite_toho.gather_candidates(args, context) "{{{
   if empty(s:toho) | call s:toho_menu() | endif
   return map(copy(s:toho), '{
-  \ "word" : v:val.title,
+  \ "word" : iconv(v:val.title, &tenc, &enc),
   \ "source" : "toho",
   \ "kind" : "command",
   \ "source__command" : v:val,
